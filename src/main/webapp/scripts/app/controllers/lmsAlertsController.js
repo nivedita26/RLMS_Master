@@ -24,14 +24,12 @@
 				}
 			}
 			serviceApi
-					.doPostWithData(
-							'/RLMS/admin/getAllBranchesForCompany',
-							companyData)
+					.doPostWithData('/RLMS/admin/getAllBranchesForCompany',companyData)
 					.then(function(response) {
 						$scope.branches = response;
 						$scope.selectedBranch.selected=undefined;
 						$scope.selectedCustomer.selected=undefined;
-						$scope.selectedStatus.selected=undefined;
+//						$scope.selectedStatus.selected=undefined;
 						var emptyReports=[];
 						$scope.siteViseReport=emptyReports;
 					});
@@ -42,22 +40,20 @@
 			 $scope.lifts=[];
 			 $scope.branches = [];
 			 $scope.selectedCustomer = {};
-			 $scope.selectedStatus = {};
+			 //$scope.selectedStatus = {};
+			 $scope.selectedEventType = {};			 
 			 $scope.selectedLift = {};
 			 $scope.selectedAmc = {};
 			 $scope.showMembers = false;
-			 $scope.status = [ {
-					id : 2,
-					name : 'Pending'
+			 $scope.eventType = [ {
+					id : 21,
+					name : 'Event'
 				}, {
-					id : 3,
-					name : 'Assigned'
+					id : 31,
+					name : 'Error'
 				}, {
-					id : 4,
-					name : 'Completed'
-				}, {
-					id : 5,
-					name : 'Resolved'
+					id : 41,
+					name : 'Response'
 				} ];
 			 
 		} 
@@ -101,6 +97,7 @@
  	        	 $scope.cutomers = customerData;
  	        	$scope.selectedCustomer.selected=undefined;
 				$scope.selectedStatus.selected=undefined;
+				$scope.selectedEventType.selected=undefined;
  	         })
 		}
 		if ($rootScope.loggedInUserInfo.data.userRole.rlmsSpocRoleMaster.roleLevel == 3) {
@@ -133,7 +130,7 @@
 			$scope.showMembers = true;
 		}
 	   
-	  	  $scope.searchCustomer = function(query){
+	  	 /* $scope.searchCustomer = function(query){
 				//console.log(query);
 				if(query && query.length > 1){
 				 var dataToSend = {
@@ -148,24 +145,24 @@
 					});
 				} 
 				
-			}
+			}*/
 	  	  $scope.resetReportList = function(){
 	  		initReport();
 	  	  }
 	  	  function constructDataToSend(){
 	  		var tempStatus = [];
-	  		if($scope.selectedStatus.selected){
-	  			if($scope.selectedStatus.selected.length===0){
-	  				alert("Please select status");
+	  		if($scope.selectedEventType.selected){
+	  			if($scope.selectedEventType.selected.length===0){
+	  				alert("Please select Event Type");
 	  			}else{
-	  				if($scope.selectedStatus.selected.length){
-	  					for (var j = 0; j < $scope.selectedStatus.selected.length; j++) {
-	  						tempStatus.push($scope.selectedStatus.selected[j].id);
+	  				if($scope.selectedEventType.selected.length){
+	  					for (var j = 0; j < $scope.selectedEventType.selected.length; j++) {
+	  						tempStatus.push($scope.selectedEventType.selected[j].id);
 	  					}
 	  				}
 	  			}
 	  		}else{
-	  			alert("Please select status");
+	  			alert("Please select Event Type");
 	  		}
 	  		
 			

@@ -82,6 +82,21 @@
 	  	        			userDetailsObj["Name"] =largeLoad[i].firstName;
 	  	        		}else{
 	  	        			userDetailsObj["Name"] =" - ";
+	  	        		}	  	        		
+	  	        		if(!!largeLoad[i].address){
+	  	        			userDetailsObj["Address"] =largeLoad[i].address;
+	  	        		}else{
+	  	        			userDetailsObj["Address"] =" - ";
+	  	        		}
+	  	        		if(!!largeLoad[i].branchName){
+	  	        			userDetailsObj["Branch"] =largeLoad[i].branchName;
+	  	        		}else{
+	  	        			userDetailsObj["Branch"] =" - ";
+	  	        		}
+	  	        		if(!!largeLoad[i].city){
+	  	        			userDetailsObj["City"] =largeLoad[i].city;
+	  	        		}else{
+	  	        			userDetailsObj["City"] =" - ";
 	  	        		}
 	  	        		if(!!largeLoad[i].cntNumber){
 	  	        			userDetailsObj["Contact_Number"] =largeLoad[i].cntNumber;
@@ -93,25 +108,12 @@
 	  	        		}else{
 	  	        			userDetailsObj["Email_Id"] =" - ";
 	  	        		}
-	  	        		if(!!largeLoad[i].address){
-	  	        			userDetailsObj["Address"] =largeLoad[i].address;
-	  	        		}else{
-	  	        			userDetailsObj["Address"] =" - ";
-	  	        		}
-	  	        		if(!!largeLoad[i].city){
-	  	        			userDetailsObj["City"] =largeLoad[i].city;
-	  	        		}else{
-	  	        			userDetailsObj["City"] =" - ";
-	  	        		}
-	  	        		if(!!largeLoad[i].branchName){
-	  	        			userDetailsObj["Branch"] =largeLoad[i].branchName;
-	  	        		}else{
-	  	        			userDetailsObj["Branch"] =" - ";
-	  	        		}
-	  	        		if(!!largeLoad[i].companyName){
-	  	        			userDetailsObj["Company"] =largeLoad[i].companyName;
-	  	        		}else{
-	  	        			userDetailsObj["Company"] =" - ";
+	  	        		if ($rootScope.loggedInUserInfo.data.userRole.rlmsSpocRoleMaster.roleLevel == 1){
+	  	        			if(!!largeLoad[i].companyName){
+	  	        				userDetailsObj["Company"] =largeLoad[i].companyName;
+	  	        			}else{
+	  	        				userDetailsObj["Company"] =" - ";
+	  	        			}
 	  	        		}
 	  	        		if(!!largeLoad[i].totalNumberOfLifts){
 	  	        			userDetailsObj["Lifts_Count"] =largeLoad[i].totalNumberOfLifts;
@@ -145,6 +147,28 @@
 	  	        			userDetailsObj["Name"] =largeLoad[i].firstName;
 	  	        		}else{
 	  	        			userDetailsObj["Name"] =" - ";
+	  	        		}	  	        			  	        	
+	  	        		if(!!largeLoad[i].address){
+	  	        			userDetailsObj["Address"] =largeLoad[i].address;
+	  	        		}else{
+	  	        			userDetailsObj["Address"] =" - ";
+	  	        		}  	        		
+	  	        		if(!!largeLoad[i].branchName){
+	  	        			userDetailsObj["Branch"] =largeLoad[i].branchName;
+	  	        		}else{
+	  	        			userDetailsObj["Branch"] =" - ";
+	  	        		}
+	  	        		if(!!largeLoad[i].city){
+	  	        			userDetailsObj["City"] =largeLoad[i].city;
+	  	        		}else{
+	  	        			userDetailsObj["City"] =" - ";
+	  	        		}	  	        		
+	  	        		if ($rootScope.loggedInUserInfo.data.userRole.rlmsSpocRoleMaster.roleLevel == 1){
+	  	        			if(!!largeLoad[i].companyName){
+	  	        				userDetailsObj["Company"] =largeLoad[i].companyName;
+	  	        			}else{
+	  	        				userDetailsObj["Company"] =" - ";
+	  	        			}
 	  	        		}
 	  	        		if(!!largeLoad[i].cntNumber){
 	  	        			userDetailsObj["Contact_Number"] =largeLoad[i].cntNumber;
@@ -156,31 +180,13 @@
 	  	        		}else{
 	  	        			userDetailsObj["Email_Id"] =" - ";
 	  	        		}
-	  	        		if(!!largeLoad[i].address){
-	  	        			userDetailsObj["Address"] =largeLoad[i].address;
-	  	        		}else{
-	  	        			userDetailsObj["Address"] =" - ";
-	  	        		}
-	  	        		if(!!largeLoad[i].city){
-	  	        			userDetailsObj["City"] =largeLoad[i].city;
-	  	        		}else{
-	  	        			userDetailsObj["City"] =" - ";
-	  	        		}
-	  	        		if(!!largeLoad[i].branchName){
-	  	        			userDetailsObj["Branch"] =largeLoad[i].branchName;
-	  	        		}else{
-	  	        			userDetailsObj["Branch"] =" - ";
-	  	        		}
-	  	        		if(!!largeLoad[i].companyName){
-	  	        			userDetailsObj["Company"] =largeLoad[i].companyName;
-	  	        		}else{
-	  	        			userDetailsObj["Company"] =" - ";
-	  	        		}
+	  	        		
 	  	        		if(!!largeLoad[i].totalNumberOfLifts){
-	  	        			userDetailsObj["Lifts_Count"] =largeLoad[i].totalNumberOfLifts;
+	  	        			userDetailsObj["Lift_Count"] =largeLoad[i].totalNumberOfLifts;
 	  	        		}else{
-	  	        			userDetailsObj["Lifts_Count"] =" - ";
+	  	        			userDetailsObj["Lift_Count"] =" - ";
 	  	        		}
+	  	        		
 	  	        		userDetails.push(userDetailsObj);
 	  	        	  }
 	  	            $scope.setPagingData(userDetails, page, pageSize);

@@ -55,7 +55,7 @@
 						id:16
 					},
 					{
-						name:"BUNGLO",
+						name:"BUNGLOW",
 						id:17
 					},
 					{
@@ -80,13 +80,23 @@
 			    });
 			};
 			$scope.loadBranchData = function(){
-				var data = {
-					companyId : $scope.selectedCompany.selected.companyId
-				}
-			    serviceApi.doPostWithData('/RLMS/admin/getAllBranchesForCompany',data)
+				var companyData={};
+				if($scope.showCompany == true){
+	  	    		companyData = {
+							companyId : $scope.selectedCompany.selected!=undefined?$scope.selectedCompany.selected.companyId:0
+						}
+	  	    	}else{
+	  	    		companyData = {
+							companyId : $rootScope.loggedInUserInfo.data.userRole.rlmsCompanyMaster.companyId
+						}
+	  	    	}
+			    serviceApi.doPostWithData('/RLMS/admin/getAllBranchesForCompany',companyData)
 			    .then(function(response){
 			    	$scope.branches = response;
-			    	
+			    	$scope.selectedBranch.selected = undefined;
+			    	$scope.selectedCustomer.selected = undefined;
+			    	var emptyArray=[];
+			    	$scope.myData = emptyArray;
 			    });
 			}
 			//Post call add customer
@@ -111,7 +121,7 @@
 					$scope.alert.type = "danger";
 				});
 			}
-			//rese add branch
+			//reset add branch
 			$scope.resetAddCustomer = function(){
 				initAddCustomer();
 			}
